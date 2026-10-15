@@ -1,0 +1,6 @@
+{
+  "name": "ICSE Edge - Class 10 Study & Paper Bank",
+  "description": "Comprehensive, verified study companion for ICSE Class 10 students: subject strategies, presentation rules, previous year papers, and revision tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

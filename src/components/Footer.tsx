@@ -1,0 +1,150 @@
+import React from 'react';
+import { ExternalLink, ShieldCheck, Globe, BookOpen } from 'lucide-react';
+import { ICSE_SUBJECTS } from '../data/subjects.ts';
+
+interface FooterProps {
+  onNavigate: (path: string) => void;
+  onOpenSeoGuide: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSeoGuide }) => {
+  return (
+    <footer className="border-t border-[#14213d]/10 bg-[#f4f1ea] text-[#14213d] mt-20 pt-12 pb-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Col 1: About */}
+          <div className="md:col-span-1 space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="w-6 h-6 rounded bg-[#14213d] text-[#faf8f5] flex items-center justify-center font-serif font-bold text-xs">
+                IE
+              </span>
+              <span className="font-serif font-bold text-lg text-[#14213d]">ICSE Edge</span>
+            </div>
+            <p className="text-xs text-[#14213d]/70 leading-relaxed">
+              A clean, focused revision companion and paper archive engineered specifically for ICSE Class 10 students in India.
+            </p>
+            <div className="pt-1 flex items-center gap-1.5 text-xs text-teal-800">
+              <ShieldCheck className="w-4 h-4 text-teal-700" />
+              <span>Zero-fluff, syllabus-aligned MVP</span>
+            </div>
+          </div>
+
+          {/* Col 2: Subjects Quick Links */}
+          <div className="space-y-2">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#14213d]/60 font-semibold">
+              Subject Strategies
+            </h4>
+            <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs">
+              {ICSE_SUBJECTS.map((sub) => (
+                <button
+                  key={sub.id}
+                  onClick={() => {
+                    onNavigate(`/strategies/${sub.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-left text-[#14213d]/80 hover:text-teal-800 hover:underline truncate py-0.5"
+                >
+                  {sub.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Col 3: Key Resources */}
+          <div className="space-y-2">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#14213d]/60 font-semibold">
+              Essential Resources
+            </h4>
+            <ul className="space-y-1.5 text-xs text-[#14213d]/80">
+              <li>
+                <button
+                  onClick={() => {
+                    onNavigate('/papers');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-teal-800 hover:underline"
+                >
+                  Previous Year Papers (2022–2025)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    onNavigate('/how-to-write');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-teal-800 hover:underline"
+                >
+                  7 Golden Answer Writing Rules
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    onNavigate('/tips');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-teal-800 hover:underline"
+                >
+                  Hall Time Management & Underlining
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    onNavigate('/progress');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-teal-800 hover:underline"
+                >
+                  Offline Study & Score Tracker
+                </button>
+              </li>
+              <li>
+                <a
+                  href="https://cisce.org"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-teal-800 hover:underline"
+                >
+                  Official CISCE Portal <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Portfolio & Discoverability */}
+          <div className="space-y-2">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#14213d]/60 font-semibold">
+              Project Architecture
+            </h4>
+            <p className="text-xs text-[#14213d]/70 leading-relaxed">
+              Built as a lightweight, static-first portfolio project with local-storage progress persistence and zero third-party dependencies.
+            </p>
+            <div className="pt-2">
+              <button
+                onClick={onOpenSeoGuide}
+                className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded bg-[#14213d]/5 hover:bg-teal-100 text-teal-900 border border-[#14213d]/15 font-medium transition-colors"
+              >
+                <Globe className="w-3.5 h-3.5 text-teal-700" />
+                <span>Custom Domain & SEO Guide</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar & Disclaimer */}
+        <div className="border-t border-[#14213d]/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#14213d]/60">
+          <p>
+            Educational portfolio project. All syllabi, past questions, and regulations belong to the Council for the Indian School Certificate Examinations (CISCE).
+          </p>
+          <div className="flex items-center gap-4">
+            <span>Local Storage Active</span>
+            <span>·</span>
+            <span>Fast & Private</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

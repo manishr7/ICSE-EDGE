@@ -1,0 +1,5 @@
+# Robots.txt for ICSE Edge
+User-agent: *
+Allow: /
+
+Sitemap: https://icseedge.lovable.app/sitemap.xml

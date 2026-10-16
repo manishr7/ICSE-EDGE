@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Navbar } from './components/Navbar.tsx';
 import { Footer } from './components/Footer.tsx';
 import { PaperModal } from './components/PaperModal.tsx';
-import { SeoGuideModal } from './components/SeoGuideModal.tsx';
 
 import { HomePage } from './pages/HomePage.tsx';
 import { StrategiesPage } from './pages/StrategiesPage.tsx';
@@ -43,7 +42,6 @@ export default function App() {
 
   // Modal states
   const [modalPaper, setModalPaper] = useState<QuestionPaper | null>(null);
-  const [isSeoGuideOpen, setIsSeoGuideOpen] = useState(false);
 
   // Sync browser back/forward buttons
   useEffect(() => {
@@ -230,10 +228,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer
-        onNavigate={handleNavigate}
-        onOpenSeoGuide={() => setIsSeoGuideOpen(true)}
-      />
+      <Footer onNavigate={handleNavigate} />
 
       {/* Paper Details & Mock Test Modal */}
       <PaperModal
@@ -242,12 +237,6 @@ export default function App() {
         isOpen={!!modalPaper}
         onClose={() => setModalPaper(null)}
         onSaveRecord={handleSavePaperRecord}
-      />
-
-      {/* SEO & Domain Setup Guide Modal */}
-      <SeoGuideModal
-        isOpen={isSeoGuideOpen}
-        onClose={() => setIsSeoGuideOpen(false)}
       />
     </div>
   );

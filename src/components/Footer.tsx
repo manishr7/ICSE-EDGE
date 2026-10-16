@@ -1,13 +1,12 @@
 import React from 'react';
-import { ExternalLink, ShieldCheck, Globe, BookOpen } from 'lucide-react';
+import { ExternalLink, ShieldCheck, BookOpen } from 'lucide-react';
 import { ICSE_SUBJECTS } from '../data/subjects.ts';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
-  onOpenSeoGuide: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSeoGuide }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="border-t border-[#14213d]/10 bg-[#f4f1ea] text-[#14213d] mt-20 pt-12 pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -113,23 +112,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSeoGuide }) =>
             </ul>
           </div>
 
-          {/* Col 4: Portfolio & Discoverability */}
+          {/* Col 4: Project Architecture */}
           <div className="space-y-2">
             <h4 className="text-xs font-mono uppercase tracking-wider text-[#14213d]/60 font-semibold">
               Project Architecture
             </h4>
             <p className="text-xs text-[#14213d]/70 leading-relaxed">
-              Built as a lightweight, static-first portfolio project with local-storage progress persistence and zero third-party dependencies.
+              Built as a lightweight, static-first portfolio project with local-storage progress persistence, instant client-side PDF generation, and zero third-party dependencies.
             </p>
-            <div className="pt-2">
-              <button
-                onClick={onOpenSeoGuide}
-                className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded bg-[#14213d]/5 hover:bg-teal-100 text-teal-900 border border-[#14213d]/15 font-medium transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5 text-teal-700" />
-                <span>Custom Domain & SEO Guide</span>
-              </button>
-            </div>
           </div>
         </div>
 

@@ -76,6 +76,16 @@ export function getRouteMetadata(path: string): RouteMetadata {
   return ROUTE_SEO_MAP['/'];
 }
 
+export const PRODUCTION_ORIGIN = 'https://icse-edge-official.ai.studio';
+
+/**
+ * Returns canonical absolute production URL for a route path
+ */
+export function getCanonicalUrl(path: string): string {
+  const cleanPath = path.split('?')[0].replace(/\/$/, '') || '';
+  return `${PRODUCTION_ORIGIN}${cleanPath === '' ? '/' : cleanPath}`;
+}
+
 /**
  * Updates document head metadata dynamically for the given route
  */
@@ -83,9 +93,7 @@ export function applyRouteSeo(path: string): void {
   if (typeof document === 'undefined') return;
 
   const metadata = getRouteMetadata(path);
-  const cleanPath = path === '' ? '/' : path;
-  const origin = typeof window !== 'undefined' ? window.location.origin : '';
-  const canonicalUrl = `${origin}${cleanPath === '/' ? '' : cleanPath}`;
+  const canonicalUrl = getCanonicalUrl(path);
 
   // 1. Title
   document.title = metadata.title;

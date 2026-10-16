@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-dev-ic342vnrzl3rhhypgrdezs-270202994203.asia-east1.run.app/sitemap.xml
+Sitemap: https://icse-edge-official.ai.studio/sitemap.xml

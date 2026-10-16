@@ -1,7 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getRouteMetadata } from './seo.ts';
+import { getRouteMetadata, PRODUCTION_ORIGIN, getCanonicalUrl } from './seo.ts';
 import { ICSE_SUBJECTS } from '../data/subjects.ts';
+
+test('PRODUCTION_ORIGIN is configured to https://icse-edge-official.ai.studio', () => {
+  assert.equal(PRODUCTION_ORIGIN, 'https://icse-edge-official.ai.studio');
+});
+
+test('getCanonicalUrl formats URLs with production origin', () => {
+  assert.equal(getCanonicalUrl('/'), 'https://icse-edge-official.ai.studio/');
+  assert.equal(getCanonicalUrl(''), 'https://icse-edge-official.ai.studio/');
+  assert.equal(getCanonicalUrl('/strategies'), 'https://icse-edge-official.ai.studio/strategies');
+  assert.equal(getCanonicalUrl('/strategies/'), 'https://icse-edge-official.ai.studio/strategies');
+  assert.equal(getCanonicalUrl('/papers?year=2024'), 'https://icse-edge-official.ai.studio/papers');
+  assert.equal(getCanonicalUrl('/strategies/physics'), 'https://icse-edge-official.ai.studio/strategies/physics');
+});
 
 test('getRouteMetadata returns valid metadata for core public routes', () => {
   const routes = ['/', '/strategies', '/papers', '/how-to-write', '/tips', '/progress'];

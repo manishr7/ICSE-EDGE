@@ -162,8 +162,10 @@ export const StrategiesPage: React.FC<StrategiesPageProps> = ({
                     {completedCount} of {totalTasks} checklist milestones
                   </span>
                 </div>
-                <button
-                  onClick={() => {
+                <a
+                  href={`/strategies/${sub.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate(`/strategies/${sub.id}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
@@ -171,7 +173,7 @@ export const StrategiesPage: React.FC<StrategiesPageProps> = ({
                 >
                   <span>Open Full Strategy</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
           );

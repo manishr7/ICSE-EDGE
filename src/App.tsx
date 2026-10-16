@@ -21,6 +21,7 @@ import {
   calculatePaperStats,
   type StoredPaperRecord,
 } from './utils/studyTracker.ts';
+import { applyRouteSeo } from './utils/seo.ts';
 
 export default function App() {
   // Client-side router state initialized with current path
@@ -112,27 +113,9 @@ export default function App() {
     setStorageItem('checked_tasks', {});
   };
 
-  // Page title sync for SEO
+  // Route SEO metadata sync (title, description, canonical, OG, Twitter)
   useEffect(() => {
-    let title = 'ICSE Edge — Class 10 Study & Paper Bank';
-    if (currentPath === '/strategies') {
-      title = 'Subject Strategies — ICSE Class 10 | ICSE Edge';
-    } else if (currentPath.startsWith('/strategies/')) {
-      const subId = currentPath.replace('/strategies/', '');
-      const found = ICSE_SUBJECTS.find((s) => s.id === subId);
-      if (found) {
-        title = `${found.name} Strategy & Blueprint — ICSE Class 10 | ICSE Edge`;
-      }
-    } else if (currentPath === '/papers') {
-      title = 'Previous Year Question Papers Bank — ICSE Class 10 | ICSE Edge';
-    } else if (currentPath === '/how-to-write') {
-      title = 'How to Write Your ICSE Paper — Presentation & Underlining Rules | ICSE Edge';
-    } else if (currentPath === '/tips') {
-      title = 'High-Yield Study Tips & Hall Management — ICSE Class 10 | ICSE Edge';
-    } else if (currentPath === '/progress') {
-      title = 'My Study Progress & Mock Scores — ICSE Class 10 | ICSE Edge';
-    }
-    document.title = title;
+    applyRouteSeo(currentPath);
   }, [currentPath]);
 
   // Render current view

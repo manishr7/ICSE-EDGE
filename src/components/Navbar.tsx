@@ -36,8 +36,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-40 bg-[#faf8f5]/95 backdrop-blur-md border-b border-[#14213d]/10 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand / Logo */}
-        <button
-          onClick={() => handleNav('/')}
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNav('/');
+          }}
           className="flex items-center gap-2.5 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-sm"
           aria-label="ICSE Edge Home"
         >
@@ -57,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               Strategy Room & Paper Bank
             </p>
           </div>
-        </button>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
@@ -66,25 +70,33 @@ export const Navbar: React.FC<NavbarProps> = ({
               currentPath === link.path ||
               (link.path === '/strategies' && currentPath.startsWith('/strategies/'));
             return (
-              <button
+              <a
                 key={link.path}
-                onClick={() => handleNav(link.path)}
-                className={`px-3 py-1.5 text-sm font-medium transition-colors rounded-md ${
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(link.path);
+                }}
+                className={`px-3 py-1.5 text-sm font-medium transition-colors rounded-md inline-block ${
                   isActive
                     ? 'text-teal-800 bg-teal-50/80 font-semibold border-b-2 border-teal-700'
                     : 'text-[#14213d]/80 hover:text-[#14213d] hover:bg-black/5'
                 }`}
               >
                 {link.label}
-              </button>
+              </a>
             );
           })}
         </nav>
 
         {/* Right Action / Progress Summary Pill */}
         <div className="hidden sm:flex items-center gap-2.5">
-          <button
-            onClick={() => handleNav('/progress')}
+          <a
+            href="/progress"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/progress');
+            }}
             className="flex items-center gap-2 px-2.5 py-1 text-xs font-mono bg-[#14213d]/5 hover:bg-teal-50 hover:text-teal-900 border border-[#14213d]/15 rounded-md transition-colors"
             title="View personal study progress"
             aria-label="Study progress summary"
@@ -93,18 +105,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>
               {paperStats.completedCount} papers · {checklistStats.completed} tasks
             </span>
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <button
-            onClick={() => handleNav('/progress')}
+          <a
+            href="/progress"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/progress');
+            }}
             className="p-1.5 text-xs font-mono bg-[#14213d]/5 rounded text-teal-800 border border-[#14213d]/10"
             aria-label="Quick progress"
           >
             {paperStats.completedCount}P/{checklistStats.completed}T
-          </button>
+          </a>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 text-[#14213d] hover:bg-black/5 rounded-md focus:outline-none"
@@ -124,17 +140,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               currentPath === link.path ||
               (link.path === '/strategies' && currentPath.startsWith('/strategies/'));
             return (
-              <button
+              <a
                 key={link.path}
-                onClick={() => handleNav(link.path)}
-                className={`w-full text-left px-3 py-2.5 rounded-md text-sm font-medium ${
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(link.path);
+                }}
+                className={`w-full block text-left px-3 py-2.5 rounded-md text-sm font-medium ${
                   isActive
                     ? 'bg-teal-50 text-teal-900 font-semibold border-l-4 border-teal-700'
                     : 'text-[#14213d]/80 hover:bg-black/5'
                 }`}
               >
                 {link.label}
-              </button>
+              </a>
             );
           })}
         </div>

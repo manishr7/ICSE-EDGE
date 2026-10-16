@@ -35,16 +35,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs">
               {ICSE_SUBJECTS.map((sub) => (
-                <button
+                <a
                   key={sub.id}
-                  onClick={() => {
+                  href={`/strategies/${sub.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate(`/strategies/${sub.id}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="text-left text-[#14213d]/80 hover:text-teal-800 hover:underline truncate py-0.5"
+                  className="text-left text-[#14213d]/80 hover:text-teal-800 hover:underline truncate py-0.5 block"
                 >
                   {sub.name}
-                </button>
+                </a>
               ))}
             </div>
           </div>
@@ -56,48 +58,56 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <ul className="space-y-1.5 text-xs text-[#14213d]/80">
               <li>
-                <button
-                  onClick={() => {
+                <a
+                  href="/papers"
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate('/papers');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-teal-800 hover:underline"
+                  className="hover:text-teal-800 hover:underline inline-block"
                 >
                   Previous Year Papers (2022–2025)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
+                <a
+                  href="/how-to-write"
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate('/how-to-write');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-teal-800 hover:underline"
+                  className="hover:text-teal-800 hover:underline inline-block"
                 >
                   7 Golden Answer Writing Rules
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
+                <a
+                  href="/tips"
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate('/tips');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-teal-800 hover:underline"
+                  className="hover:text-teal-800 hover:underline inline-block"
                 >
                   Hall Time Management & Underlining
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
+                <a
+                  href="/progress"
+                  onClick={(e) => {
+                    e.preventDefault();
                     onNavigate('/progress');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-teal-800 hover:underline"
+                  className="hover:text-teal-800 hover:underline inline-block"
                 >
                   Offline Study & Score Tracker
-                </button>
+                </a>
               </li>
               <li>
                 <a

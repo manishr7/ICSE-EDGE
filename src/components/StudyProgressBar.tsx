@@ -26,13 +26,17 @@ export const StudyProgressBar: React.FC<StudyProgressBarProps> = ({
             Class 10 Board Readiness
           </h3>
         </div>
-        <button
-          onClick={() => onNavigate('/progress')}
+        <a
+          href="/progress"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('/progress');
+          }}
           className="inline-flex items-center gap-1.5 text-xs font-medium text-teal-800 hover:text-teal-950 hover:underline"
         >
           <span>Detailed Study Log</span>
           <ArrowRight className="w-3.5 h-3.5" />
-        </button>
+        </a>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">

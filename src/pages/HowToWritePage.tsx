@@ -140,13 +140,17 @@ export const HowToWritePage: React.FC<HowToWritePageProps> = ({ onNavigate }) =>
             Every subject has unique blueprints, marking breakdowns, and clock distributions.
           </p>
         </div>
-        <button
-          onClick={() => onNavigate('/strategies')}
+        <a
+          href="/strategies"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('/strategies');
+          }}
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#14213d] hover:bg-teal-800 text-white text-xs font-semibold rounded-lg transition-colors shrink-0"
         >
           <span>Open Subject Strategies</span>
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </a>
       </div>
     </div>
   );

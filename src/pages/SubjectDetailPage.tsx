@@ -58,30 +58,42 @@ export const SubjectDetailPage: React.FC<SubjectDetailPageProps> = ({
     <div className="space-y-8 pt-2">
       {/* Top Breadcrumb & Navigation */}
       <div className="flex items-center justify-between">
-        <button
-          onClick={() => onNavigate('/strategies')}
+        <a
+          href="/strategies"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('/strategies');
+          }}
           className="inline-flex items-center gap-1.5 text-xs font-mono text-[#14213d]/70 hover:text-[#14213d] hover:underline"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>All 10 Subjects</span>
-        </button>
+        </a>
 
         <div className="flex items-center gap-3">
           {prevSubject && (
-            <button
-              onClick={() => onNavigate(`/strategies/${prevSubject.id}`)}
+            <a
+              href={`/strategies/${prevSubject.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`/strategies/${prevSubject.id}`);
+              }}
               className="text-xs text-[#14213d]/60 hover:text-[#14213d] hover:underline hidden sm:inline"
             >
               ← {prevSubject.name}
-            </button>
+            </a>
           )}
           {nextSubject && (
-            <button
-              onClick={() => onNavigate(`/strategies/${nextSubject.id}`)}
+            <a
+              href={`/strategies/${nextSubject.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`/strategies/${nextSubject.id}`);
+              }}
               className="text-xs text-teal-800 hover:text-teal-950 font-medium hover:underline"
             >
               Next: {nextSubject.name} →
-            </button>
+            </a>
           )}
         </div>
       </div>

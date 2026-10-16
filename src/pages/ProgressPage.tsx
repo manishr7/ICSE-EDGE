@@ -324,12 +324,16 @@ export const ProgressPage: React.FC<ProgressPageProps> = ({
 
                 <div className="flex items-center justify-between text-[11px] text-[#14213d]/60">
                   <span>{pct}% complete</span>
-                  <button
-                    onClick={() => onNavigate(`/strategies/${subject.id}`)}
-                    className="text-teal-800 hover:underline font-medium"
+                  <a
+                    href={`/strategies/${subject.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(`/strategies/${subject.id}`);
+                    }}
+                    className="text-teal-800 hover:underline font-medium inline-block"
                   >
                     Open Checklist →
-                  </button>
+                  </a>
                 </div>
               </div>
             );

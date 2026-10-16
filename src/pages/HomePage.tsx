@@ -46,27 +46,39 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           {/* Primary Quick Actions */}
           <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => onNavigate('/strategies')}
+            <a
+              href="/strategies"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/strategies');
+              }}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#14213d] hover:bg-teal-800 text-white font-medium text-sm transition-colors shadow-sm"
             >
               <span>Explore 10 Subject Strategies</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => onNavigate('/papers')}
+            </a>
+            <a
+              href="/papers"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/papers');
+              }}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white hover:bg-[#14213d]/5 text-[#14213d] font-medium text-sm border border-[#14213d]/20 transition-colors"
             >
               <FileText className="w-4 h-4 text-teal-700" />
               <span>Previous Year Papers Bank</span>
-            </button>
-            <button
-              onClick={() => onNavigate('/how-to-write')}
+            </a>
+            <a
+              href="/how-to-write"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/how-to-write');
+              }}
               className="inline-flex items-center gap-1.5 px-4 py-3 rounded-lg text-teal-800 hover:text-teal-950 font-medium text-sm hover:underline"
             >
               <span>7 Presentation Rules</span>
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -97,13 +109,17 @@ export const HomePage: React.FC<HomePageProps> = ({
           <p className="text-sm text-[#14213d]/80 leading-relaxed mb-5">
             How to study each subject, how to structure an answer for its marks, what to underline, how to lay out the answer sheet, and how to divide the clock inside the hall.
           </p>
-          <button
-            onClick={() => onNavigate('/strategies')}
+          <a
+            href="/strategies"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/strategies');
+            }}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-800 group-hover:text-teal-950 group-hover:translate-x-0.5 transition-all"
           >
             <span>All 10 Subject Strategies</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
         <div className="bg-[#f4f1ea] border border-[#14213d]/15 rounded-xl p-6 relative overflow-hidden group">
@@ -116,13 +132,17 @@ export const HomePage: React.FC<HomePageProps> = ({
           <p className="text-sm text-[#14213d]/80 leading-relaxed mb-5">
             Past papers under full exam conditions, the rules for making a mock actually count, official CISCE marking schemes, and high-frequency recurring questions.
           </p>
-          <button
-            onClick={() => onNavigate('/papers')}
+          <a
+            href="/papers"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/papers');
+            }}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-800 group-hover:text-teal-950 group-hover:translate-x-0.5 transition-all"
           >
             <span>Go to the Paper Bank</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
       </section>
 
@@ -137,19 +157,25 @@ export const HomePage: React.FC<HomePageProps> = ({
               Jump to a Subject
             </h2>
           </div>
-          <button
-            onClick={() => onNavigate('/strategies')}
+          <a
+            href="/strategies"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/strategies');
+            }}
             className="text-xs font-mono text-teal-800 hover:underline self-start sm:self-auto"
           >
             View all categories →
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
           {ICSE_SUBJECTS.map((subject) => (
-            <button
+            <a
               key={subject.id}
-              onClick={() => {
+              href={`/strategies/${subject.id}`}
+              onClick={(e) => {
+                e.preventDefault();
                 onNavigate(`/strategies/${subject.id}`);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
@@ -174,7 +200,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <span>{subject.duration}</span>
                 <span className="font-semibold group-hover:translate-x-1 transition-transform">→</span>
               </div>
-            </button>
+            </a>
           ))}
         </div>
       </section>
@@ -195,13 +221,17 @@ export const HomePage: React.FC<HomePageProps> = ({
             Numbering alignment, pencil diagrams, keyword underlining, and units are not cosmetics — they are the marks.
           </p>
           <div className="pt-2">
-            <button
-              onClick={() => onNavigate('/how-to-write')}
+            <a
+              href="/how-to-write"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/how-to-write');
+              }}
               className="inline-flex items-center gap-2 px-4 py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-lg text-xs font-semibold tracking-wide transition-colors"
             >
               <span>Read the 7 Answer-Writing Rules</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
